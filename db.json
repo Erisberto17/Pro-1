@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "name": "Promobank",
+      "start": "24/09/1994",
+      "Creds": {
+        "checked": 15,
+        "wait": 34,
+        "blocked": 34
+      },
+      "fila": "5",
+      "consultas": "3",
+      "id": "1"
+    },
+    {
+      "name": "Erisberto",
+      "start": "03/11/2001",
+      "Creds": {
+        "checked": 12,
+        "wait": 31,
+        "blocked": 44
+      },
+      "fila": "5",
+      "consultas": "20",
+      "id": "2"
+    }
+  ]
+}
