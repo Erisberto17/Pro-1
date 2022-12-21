@@ -22,7 +22,7 @@
                 
                 <div id="fila" class="fila"> <meter></meter> </div>
                 
-                <Consubar :name="(user.consultas + - + user.id)" :consulta="user.consultas" :id="user.id"/>
+                <Consubar :consulta="user.consultas" :key="user.id"/>
                 
                 <div id="acoes" class="acoes">
                     <img  src="/Imgs/play-button.png" alt="">

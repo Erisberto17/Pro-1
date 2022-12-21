@@ -3,7 +3,7 @@
         <div class="box-circle">
             <svg>
                 <circle cx="17" cy="17" r="17"></circle>
-                <circle id="barProg" cx="17" cy="17" r="17" > </circle>
+                <circle id="barProg" cx="17" cy="17" r="17" style="--num:{{}}" > </circle>
             </svg>
             {{ consulta }}
         </div>
@@ -43,7 +43,6 @@
         name:"Consubar",
         props:{
             consulta : String,
-            id : String
 
         },
         data(){
@@ -59,7 +58,7 @@
     
                 bar.style.strokeDashoffset = 106 - (106 * consu) / 100;
                 
-                console.log(document.ENTITY_NODE)
+                console.log(bar)
             }
 
         },
