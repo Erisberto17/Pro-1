@@ -9,7 +9,7 @@
             <p  class="acoes">Ações</p>
         </div>
         <div id="body">
-            <div id="rows" v-for="user in users" :key="user.id">
+            <div id="rows" v-for="user in users" v-bind:key="user.id">
 
                 <a href="" id="name" class="name"><img class="user" src="/Imgs/rope-circle.png" alt="">{{user.name}}</a>
                 <p id="start" class="start">{{ user.start }}</p>
@@ -20,12 +20,12 @@
                     <p><img src="/Imgs/block.png" alt="">{{user.Creds.blocked}}</p>
                 </div>
                 
-                <div id="fila" class="fila"> <meter></meter> </div>
+                <Filabar :fila="this.users.length" :vez="user.id"  />
                 
-                <Consubar :consulta="user.consultas" :key="user.id"/>
+                <Consubar id="consubar" :consulta="user.consultas" :total="this.totalfila"/>
                 
                 <div id="acoes" class="acoes">
-                    <img  src="/Imgs/play-button.png" alt="">
+                    <img  src="/Imgs/play-button.png" alt="" @click="pause(user.id)">
                     <img src="/Imgs/Edit.png" alt="">
                     <img @click="deleteData(user.id)" src="/Imgs/Trash.png" alt="">
                 </div> 
@@ -37,39 +37,52 @@
 </template>
 <script>
     import Consubar from "./Consubar.vue"
+    import Filabar from "./Filabar.vue"
 
 export default {
     name:"Dashboard",
     data(){
         return{
-            users: null,
-
+            users:'',
+            totalfila: NaN
         }
     },
     components:{
-        Consubar
+        Consubar,
+        Filabar
     },
     methods:{
         async getData(){
             const req = await fetch("http://localhost:3000/users");
 
             const res = await req.json()
-
-            this.users = res
+            console.log(res.length)
+            ;
+            this.users = res     
 
         },
-
+        
         async deleteData(id){
             const req = await fetch(`http://localhost:3000/users/${id}`, {
                 method: "DELETE"
             });
-            this.getData()
             
+            this.getData()
         },
+        pause(data){
+            
+            if(confirm("Tem certeza que deseja pausar o processo ?") ){
+                alert("Processo pausado")
+            }else{
+                alert("pausa negada")
+            }
         },
-        mounted(){
+    },
+    
+    mounted(){
         this.getData()
-    }
+        
+    },
 }
 </script>
 <style scoped>
