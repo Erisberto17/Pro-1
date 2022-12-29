@@ -26,7 +26,7 @@
                 
                 <div id="acoes" class="acoes">
                     <img  src="/Imgs/play-button.png" alt="" @click="pause(user.id)">
-                    <img src="/Imgs/Edit.png" alt="">
+                    <img src="/Imgs/Edit.png" alt="" @CLICK="edit(user)">
                     <img @click="deleteData(user.id)" src="/Imgs/Trash.png" alt="">
                 </div> 
             </div>
@@ -44,7 +44,8 @@ export default {
     data(){
         return{
             users:'',
-            totalfila: NaN
+            totalfila: NaN,
+            edit:''
         }
     },
     components:{
@@ -77,6 +78,10 @@ export default {
                 alert("pausa negada")
             }
         },
+        edit(usuario){
+            const hData1 = '60'
+            const hData2 = ''
+        }
     },
     
     mounted(){
@@ -107,7 +112,10 @@ export default {
         justify-content: space-between;
         text-align: center;
     }
-    
+    #rows{
+        height: 60px;
+               
+    }
     #table #body #rows{
         border: 1px solid rgba(85, 85, 85, 0.247);
         display: flex;
@@ -115,31 +123,5 @@ export default {
         padding: 0 5px;
         justify-content: space-between;
         text-align: center;
-    }
-    .box{
-        width:10px;
-    }
-    svg{
-        width: 50px;
-        height: 50px;
-        margin-top: 10px;
-    }
-    circle{
-        width: 50px; height: 50px;
-        fill: none;
-        stroke: black;
-        stroke-width: 5;
-        transform:translate(5px, 5px);
-        stroke-dasharray: 106;
-        stroke-dashoffset: 106;
-    
-    }
-    circle:nth-child(1){
-        stroke-dashoffset: 0;
-        stroke: #111;
-    }
-    circle:nth-child(2){
-        transition: stroke-dashoffset 5s;
-        stroke: dodgerblue;
     }
 </style>

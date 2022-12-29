@@ -50,6 +50,7 @@
         data(){
             return{
                 strokeDashoffset: 106 - (106 * this.consulta) / 100,
+                
                 color: "red"
             }
         },
